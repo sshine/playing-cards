@@ -1,0 +1,41 @@
+name:        playing-cards
+version:     0.1.0
+
+synopsis:    'Data types and functions for dealing with regular playing cards.'
+description: 'This library provides data types and functions for dealing with regular playing cards.'
+category:    Game
+license:     MIT
+
+homepage:    https://github.com/sshine/playing-cards
+author:      Simon Shine
+maintainer:  shreddedglory@gmail.com
+copyright:   2020 Simon Shine
+
+extra-source-files:
+  - README.md
+
+dependencies:
+  - base        >= 4.8 && < 5
+  - containers ^>= 0.6
+  - random     ^>= 1.2
+  - validity
+  - genvalidity
+
+library:
+  exposed-modules:
+    - Data.Card
+  source-dirs: src
+
+tests:
+  test:
+    main: test.hs
+    source-dirs: test
+    dependencies:
+      - playing-cards
+      - tasty
+      - tasty-discover
+      - tasty-hspec
+      - tasty-hedgehog
+      - hedgehog
+      - hspec
+      - genvalidity-hspec

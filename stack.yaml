@@ -1,0 +1,7 @@
+resolver: lts-16.21
+packages:
+  - .
+extra-deps:
+  - random-1.2.0
+  - splitmix-0.1.0.3
+  - hedgehog-1.0.4

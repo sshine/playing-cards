@@ -1,0 +1,60 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 1cd1ca37d232492823dee34286c0dde19c760fe686edc829c735b4bab26ca206
+
+name:           playing-cards
+version:        0.1.0
+synopsis:       Data types and functions for dealing with regular playing cards.
+description:    This library provides data types and functions for dealing with regular playing cards.
+category:       Game
+homepage:       https://github.com/sshine/playing-cards
+author:         Simon Shine
+maintainer:     shreddedglory@gmail.com
+copyright:      2020 Simon Shine
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+library
+  exposed-modules:
+      Data.Card
+  other-modules:
+      Paths_playing_cards
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.8 && <5
+    , containers >=0.6 && <0.7
+    , genvalidity
+    , random >=1.2 && <1.3
+    , validity
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: test.hs
+  other-modules:
+      CardTest
+      Paths_playing_cards
+  hs-source-dirs:
+      test
+  build-depends:
+      base >=4.8 && <5
+    , containers >=0.6 && <0.7
+    , genvalidity
+    , genvalidity-hspec
+    , hedgehog
+    , hspec
+    , playing-cards
+    , random >=1.2 && <1.3
+    , tasty
+    , tasty-discover
+    , tasty-hedgehog
+    , tasty-hspec
+    , validity
+  default-language: Haskell2010
