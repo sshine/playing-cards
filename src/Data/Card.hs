@@ -3,8 +3,17 @@
 {-# LANGUAGE RecordWildCards #-}
 
 module Data.Card
-  ( Card(..)
+  ( -- Types
+    Card(..)
   , Suit(..)
+  , Rank(..)
+  , fullDeck
+
+    -- Functions
+  , cardValue
+  , cardName
+  , suitName
+  , rankName
   ) where
 
 import Data.Bifunctor (bimap)
@@ -88,3 +97,34 @@ rankName = fromString . show
 -- | The number of 'Rank's ('Two', 'Three', etc.)
 rankBase :: Int
 rankBase = fromEnum (maxBound :: Rank) + 1
+
+-- | Provides a list of 'Card's in New Deck Order:
+--
+-- https://ambitiouswithcards.com/new-deck-order/
+fullDeck :: [Card]
+fullDeck = concat
+  [ map (Card Spades) aceToKing
+  , map (Card Diamonds) aceToKing
+  , map (Card Clubs) kingToAce
+  , map (Card Hearts) kingToAce
+  ]
+
+aceToKing :: [Rank]
+aceToKing =
+  [ Ace
+  , Two
+  , Three
+  , Four
+  , Five
+  , Six
+  , Seven
+  , Eight
+  , Nine
+  , Ten
+  , Jack
+  , Queen
+  , King
+  ]
+
+kingToAce :: [Rank]
+kingToAce = reverse aceToKing
